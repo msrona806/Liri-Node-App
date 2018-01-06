@@ -15,6 +15,16 @@ var client = new twitter(keys.twitter);
 
 //FUNCTIONS
 function myTweets() {
+  var params = {screen_name: 'sharonay2015', count: 10};
+  client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    if (!error) {
+      // console.log(tweets);
+    }
+    for (i=0; i < tweets.length; i++){
+      console.log(tweets[i].text);
+    }
+  });
+  
   console.log("myTweets");
 }
 function spotifyThisSong() {
@@ -31,6 +41,7 @@ function doWhatItSays() {
 var command = process.argv[2];
 
 if (command === "my-tweets") {
+ 
   myTweets();
 }
 else if (command === "spotify-this-song") {
