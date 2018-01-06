@@ -1,0 +1,22 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "node program that takes parameters and returns data.",
+  "main": "liri.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msrona806/Liri-Node-App.git"
+  },
+  "keywords": [
+    "liri"
+  ],
+  "author": "Sharona Young",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msrona806/Liri-Node-App/issues"
+  },
+  "homepage": "https://github.com/msrona806/Liri-Node-App#readme"
+}
