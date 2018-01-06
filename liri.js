@@ -1,22 +1,30 @@
 require("dotenv").config(); //pulls in .env file
 
 //Goes into locked files to the keys needed
-var keys = require("./keys"); //pulls in keys.js file info
-var spotify = new Spotify(keys.spotify);
-var client = new Twitter(keys.twitter);
+//pulls in keys.js file info
+var keys = require("./keys"); 
+
+//node packages required
+var twitter = require('twitter');
+var spotify = require('node-spotify-api');
+var request = require('request');
+var fs = require('fs');
+
+// var spotify = new spotify(keys.spotify);
+var client = new twitter(keys.twitter);
 
 //FUNCTIONS
 function myTweets() {
-  console.log(myTweets);
+  console.log("myTweets");
 }
 function spotifyThisSong() {
-  console.log(spotifyThisSong);
+  console.log("spotifyThisSong");
 }
 function movieThis() {
-  console.log(movieThis);
+  console.log("movieThis");
 }
 function doWhatItSays() {
-  console.log(doWhatItSays);
+  console.log("doWhatItSays");
 }
 
 //var to determine what user wants to do, user input goes hear
@@ -31,9 +39,11 @@ else if (command === "spotify-this-song") {
 else if (command === "movie-this") {
   movieThis();
 }
-else if (command === "do-what-it says") {
+else if (command === "do-what-it-says") {
   doWhatItSays();
+}
+else { 
+  console.log("WRONG!!! Check your spelling!")
 }
 
 
-)
