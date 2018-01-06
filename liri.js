@@ -10,7 +10,7 @@ var spotify = require('node-spotify-api');
 var request = require('request');
 var fs = require('fs');
 
-// var spotify = new spotify(keys.spotify);
+var spotify = new spotify(keys.spotify);
 var client = new twitter(keys.twitter);
 
 //FUNCTIONS
@@ -25,9 +25,15 @@ function myTweets() {
     }
   });
   
-  console.log("myTweets");
 }
 function spotifyThisSong() {
+  spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+       console.log(data); 
+    });
+
   console.log("spotifyThisSong");
 }
 function movieThis() {
