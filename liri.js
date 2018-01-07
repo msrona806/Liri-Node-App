@@ -19,17 +19,26 @@ var input = "";
 
 
 //FUNCTIONS
+
+//------------Twitter----------------
 function myTweets() {
-  var params = {screen_name: 'sharonay2015', count: 10};
-  client.get('statuses/user_timeline', params, function(error, tweets, response) {
-    if (!error) {
-      // console.log(tweets);
-    }
-    for (i=0; i < tweets.length; i++){
-      console.log(tweets[i].text);
-    }
-  });  
-}
+  
+    //grabs twitter information, shows the 
+    var params = {screen_name: 'sharonay2015', count: 10};
+    client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    
+    // If there was an error reading the file, log it
+      if (!error) {   
+      }
+
+      //log tweets and details on when it was tweeted
+      for (i=0; i < tweets.length; i++){
+        console.log("**********");
+        console.log(tweets[i].text),
+        console.log('created at: ' + tweets[i].created_at);
+      }
+    });  
+  }
 
 function spotifyThisSong() {
   spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
@@ -41,7 +50,6 @@ function spotifyThisSong() {
        console.log(data.tracks.items[0].album.artists[0].name); 
     });
 }
-
 
 function movieThis() {
   // console.log('movieThis')
