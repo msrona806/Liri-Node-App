@@ -40,14 +40,22 @@ function myTweets() {
     });  
   }
 
+//------------Spotify----------
 function spotifyThisSong() {
+
+  //code to grab information from spotify
   spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
     
     // If there was an error reading the file, we log it and return immediately
     if (err) {
       return console.log('Error occurred: ' + err);
     }
-       console.log(data.tracks.items[0].album.artists[0].name); 
+
+      // logs 
+       console.log("* Artist(s): " + data.tracks.items[0].album.artists[0].name); 
+       console.log("* Song Title: " + data.tracks.items[0].name);
+       console.log("* Album Title: " + data.tracks.items[0].album.name);
+       console.log("* Track Preview: " + data.tracks.items[0].href);
     });
 }
 
@@ -64,13 +72,13 @@ function movieThis() {
       var jsonData = JSON.parse(body); 
       var movieData = 
 
-        "Title: " + jsonData.Title+"\n"+ 
-        "Year: " + jsonData.Year+"\n"+
-            "Imdb Rating: " + jsonData.imdbRating+"\n"+
-            "Rotten Tomatoes Rating: " + jsonData.Ratings[1].Value+"\n"+
-        "Country: " + jsonData.Country+"\n"+
-        "Language: " + jsonData.Language+"\n"+
-        "Plot: " + jsonData.Plot+"\n"+
+        "* Title: " + jsonData.Title+"\n"+ 
+        "* Year: " + jsonData.Year+"\n"+
+            "* Imdb Rating: " + jsonData.imdbRating+"\n"+
+            "* Rotten Tomatoes Rating: " + jsonData.Ratings[1].Value+"\n"+
+        "* Country: " + jsonData.Country+"\n"+
+        "* Language: " + jsonData.Language+"\n"+
+        "* Plot: " + jsonData.Plot+"\n"+
         "Actors: " + jsonData.Actors+"\n";            
         }
         console.log(movieData);
@@ -110,6 +118,7 @@ for (var i = 2; i < nodeArgs.length; i++) {
 //   })
 // })
 
+// logic used to run functions, based on what command user types in
 if (command === "my-tweets") {
  
   myTweets();
