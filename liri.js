@@ -28,28 +28,40 @@ function myTweets() {
 }
 function spotifyThisSong() {
   spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+    
+    // If there was an error reading the file, we log it and return immediately
     if (err) {
       return console.log('Error occurred: ' + err);
     }
-       console.log(data); 
+       console.log(data.tracks.items[0].album.artists[0].name); 
     });
-
-  console.log("spotifyThisSong");
 }
 function movieThis() {
-  console.log("movieThis");
-}
-function doWhatItSays() {
-  console.log("doWhatItSays");
+   console.log("movieThis");
 }
 
 //var to determine what user wants to do, user input goes hear
 var command = process.argv[2];
+var number = 0;
+
+function doWhatItSays() {
+
+  fs.readFile(command, "utf8", function(err, data) {
+    // If there was an error reading the file, we log it and return immediately
+    if (err) {
+      return console.log(err);
+    }
+
+    fs.appendFile("random.txt", "Hello Kitty", function(err) {
+  
+    console.log("doWhatItSays");
+  })
+})
 
 if (command === "my-tweets") {
  
   myTweets();
-}
+} 
 else if (command === "spotify-this-song") {
   spotifyThisSong ();
 }
@@ -63,4 +75,4 @@ else {
   console.log("WRONG!!! Check your spelling!")
 }
 
-
+}
