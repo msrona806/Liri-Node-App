@@ -19,6 +19,7 @@ var command = process.argv[2];
 
 //var to determine what user wants to do, user input goes here
 var input = "";
+var song = process.argv[3];
 
 //holds multiple word titles
 for (var i = 3; i < nodeArg.length; i++) {
@@ -55,12 +56,14 @@ function myTweets() {
 function spotifyThisSong() {
 
   //code to grab information from spotify
-  spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+  spotify.search({ type: 'track', query: song || 'dancing in the moonlight'}, function(err, data) {
     
     // If there was an error reading the file, we log it and return immediately
     if (err) {
       return console.log('Error occurred: ' + err);
     }
+
+      //code for user to input song
 
       // logs 
        console.log("* Artist(s): " + data.tracks.items[0].album.artists[0].name); 
@@ -127,6 +130,7 @@ else if (command === "movie-this") {
 else if (command === "do-what-it-says") {
   doWhatItSays();
 }
+//log directions for user to enter a command if none entered
 else { 
   console.log(">>>>>>>>>You have to enter one of the following commands: my-tweets, spotify-this-song, movie-this, do-what-it-says<<<<<<<");
 }
