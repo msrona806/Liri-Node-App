@@ -29,8 +29,6 @@ for (var i = 3; i < nodeArg.length; i++) {
   }
 }
 
-
-
 //FUNCTIONS
 
 //------------Twitter----------------
@@ -74,6 +72,7 @@ function spotifyThisSong() {
 
 //-----------OMDB----------
 function movieThis() {
+
   // console.log('movieThis')
   if (input === undefined){
     input = "Mr Nobody";
@@ -99,38 +98,21 @@ function movieThis() {
       });
     }
 
+  // ----------Do What It Says ----------
+  function doWhatItSays() {
 
-    // //variable to store the arguments in an array
-    // var nodeArgs = process.argv[2];
-
-    // // //variable to create an empty array for holding the movie name
-    // var movieName = nodeArgs;
-    // for (var i = 2; i < nodeArgs.length; i++) {
-
-    //   if ( i > 2 && i < nodeArgs.length) {
-    //     movieName = movieName + "+" + nodeArgs[i];
-    //   }
-      
-    //   else {
-    //     movieThis += nodeArgs[i];
-    //   }
-    // }
-    // }
-
-
-// function doWhatItSays() {
-
-//   fs.readFile(command, "utf8", function(err, data) {
-//     // If there was an error reading the file, we log it and return immediately
-//     if (err) {
-//       return console.log(err);
-//     }
-
-//     fs.appendFile("random.txt", "Hello Kitty", function(err) {
-  
-//     console.log("doWhatItSays");
-//   })
-// })
+    fs.readFile("random.txt", "utf8", function(err, data) {
+      //If there was an error reading the file, we log it and return immediately
+      if (err) {
+        return console.log(err);
+      }
+      //add text to random.txt file
+      fs.appendFile("random.txt", "Hello Kitty", function(err) {
+    
+      console.log("doWhatItSays");
+      })
+    })
+  }
 
 // logic used to run functions, based on what command user types in
 if (command === "my-tweets") {
@@ -146,7 +128,7 @@ else if (command === "do-what-it-says") {
   doWhatItSays();
 }
 else { 
-  console.log("WRONG!!! Check your spelling!")
+  console.log(">>>>>>>>>You have to enter one of the following commands: my-tweets, spotify-this-song, movie-this, do-what-it-says<<<<<<<");
 }
 
 
