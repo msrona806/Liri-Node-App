@@ -5,3 +5,5 @@
 * It must be ran in the command line
 * parameters are entered in and data is returned
 
+### Author
+Sharona Young
