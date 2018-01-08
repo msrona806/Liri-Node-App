@@ -5,5 +5,7 @@
 * It must be ran in the command line
 * parameters are entered in and data is returned
 
+![Liri-Node-App](liriAppCommands.gif)
+
 ### Author
 Sharona Young
