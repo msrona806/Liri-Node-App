@@ -13,9 +13,22 @@ var fs = require('fs');
 var spotify = new spotify(keys.spotify);
 var client = new twitter(keys.twitter);
 
-//var to determine what user wants to do, user input goes here
+//variables to store input
+var nodeArg = process.argv;
 var command = process.argv[2];
+
+//var to determine what user wants to do, user input goes here
 var input = "";
+
+//holds multiple word titles
+for (var i = 3; i < nodeArg.length; i++) {
+  if (i>3 && i<nodeArg.length) {
+    input = input + "+" + nodeArg[i];
+  } else {
+    input = input + nodeArg[i];
+  }
+}
+
 
 
 //FUNCTIONS
@@ -59,13 +72,14 @@ function spotifyThisSong() {
     });
 }
 
+//-----------OMDB----------
 function movieThis() {
   // console.log('movieThis')
-  if (movieName === undefined){
-    movieName = "Mr Nobody";
+  if (input === undefined){
+    input = "Mr Nobody";
   }
     
-  var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+  var queryUrl = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy";
  
   request(queryUrl, function(error, response, body) {
     if (!error && response.statusCode == 200) {
@@ -83,25 +97,25 @@ function movieThis() {
         }
         console.log(movieData);
       });
+    }
 
 
-//variable to store the arguments in an array
-var nodeArgs = process.argv;
+    // //variable to store the arguments in an array
+    // var nodeArgs = process.argv[2];
 
-//variable to create an empty array for holding the movie name
-var movieName = "";
+    // // //variable to create an empty array for holding the movie name
+    // var movieName = nodeArgs;
+    // for (var i = 2; i < nodeArgs.length; i++) {
 
-for (var i = 2; i < nodeArgs.length; i++) {
-
-  if ( i > 2 && i < nodeArgs.length) {
-    movieName = movieName + "+" + nodeArgs[i];
-  }
-   
-  else {
-    movieThis += nodeArgs[i];
-  }
-}
-}
+    //   if ( i > 2 && i < nodeArgs.length) {
+    //     movieName = movieName + "+" + nodeArgs[i];
+    //   }
+      
+    //   else {
+    //     movieThis += nodeArgs[i];
+    //   }
+    // }
+    // }
 
 
 // function doWhatItSays() {
@@ -120,7 +134,6 @@ for (var i = 2; i < nodeArgs.length; i++) {
 
 // logic used to run functions, based on what command user types in
 if (command === "my-tweets") {
- 
   myTweets();
 } 
 else if (command === "spotify-this-song") {
